@@ -1,0 +1,50 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{setspace}
+\usepackage{hyperref}
+
+\title{\textbf{Predicting Racketlon Match Score Differences Using Discipline-Specific Elo Ratings and Machine Learning}}
+\author{Zain Magdon-Ismail}
+\date{}
+
+\begin{document}
+\maketitle
+
+\onehalfspacing
+
+\section*{Abstract}
+Racketlon is a multi-discipline sport in which match outcomes are determined by cumulative point differences across four racket sports: table tennis, badminton, squash, and tennis. This project aims to develop a data-driven system to predict discipline-level score differences using historical match data and engineered performance features. A time-aware, discipline-specific Elo rating system will be constructed to model player skill over time. These ratings, along with contextual and recent-form features, will be used in supervised learning models to estimate per-discipline score margins, which are then aggregated to predict overall match outcomes.
+
+\section*{Problem Statement}
+Predicting outcomes in multi-discipline sports presents unique challenges due to heterogeneous player strengths across disciplines and temporal variation in performance. Binary win-loss prediction fails to capture the margin-based structure that determines match results in racketlon, where cumulative points decide the winner. This project addresses this limitation by modeling score differences at the discipline level, allowing for a more granular and informative representation of match dynamics. The project aligns with course concepts in supervised learning, regression, feature engineering, and model evaluation.
+
+\section*{Proposed Approach and Techniques}
+Match prediction will be formulated as a supervised regression problem at the discipline level. For each match, separate regression targets will be defined corresponding to score differences in table tennis, badminton, squash, and tennis. Predicted discipline-level margins will be aggregated to estimate overall match score difference and inferred match outcomes.
+
+A discipline-specific Elo-style rating system will be implemented to estimate player strength prior to each match, incorporating temporal ordering and margin-aware updates. Elo-derived features will serve as both a strong baseline and core model inputs. Additional features capturing recent form, head-to-head history, experience, and match context will be engineered using only information available prior to each match.
+
+Regression models such as linear regression and tree-based methods will be trained to predict discipline-level score differences. Model performance will be evaluated using error-based metrics at both the discipline and match levels, and analysis will be conducted to understand which factors most strongly influence prediction accuracy.
+
+\section*{Data and Resources}
+The dataset consists of historical racketlon match data scraped from \href{https://fir.tournamentsoftware.com}{fir.tournamentsoftware.com}. Available data includes match dates, tournament context, player identifiers, and per-discipline scores. All features will be computed using strictly pre-match information to prevent temporal leakage. Data processing and modeling will be conducted in Python using standard data science libraries. GPU resources are not expected to be required.
+
+\section*{Expected Outcomes}
+The expected outcomes of this project include:
+\begin{itemize}
+    \item Meaningful discipline-specific and overall player ratings
+    \item Accurate prediction of score differences at both the discipline and match levels
+    \item Analytical insights into the effects of discipline imbalance, recent form, and experience on match outcomes
+\end{itemize}
+
+\section*{Team Roles and Collaboration Plan}
+This project will be completed individually. All aspects of data preprocessing, feature engineering, modeling, evaluation, and documentation will be handled independently.
+\section*{Timeline}
+\begin{itemize}
+    \item \textbf{January--February}: Data preprocessing, exploratory analysis, and rating system implementation (Done Mostly)
+    \item \textbf{February--March}: Feature engineering and regression model development
+    \item \textbf{March--April}: Model evaluation, error analysis, and refinement
+    \item \textbf{April--May}: Final report writing and optional extensions
+\end{itemize}
+
+\end{document}
